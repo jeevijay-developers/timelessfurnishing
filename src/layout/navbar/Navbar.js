@@ -71,12 +71,12 @@ const Navbar = () => {
                   </span>
                 </button>
               </div>
-              <div className="w-24 sm:w-28 mx-auto flex items-center justify-center">
+              <div className="w-24 sm:w-28 my-2 mx-auto flex items-center justify-center">
                 <Link href="/">
                   <img
-                    width={60}
-                    height={60}
-                    className="w-full h-auto "
+                    width={100}
+                    height={100}
+                    style={{ width: "15rem", maxWidth: "100rem" }}
                     priority
                     src="/logo/gray-logo.png"
                     alt="logo"
