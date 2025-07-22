@@ -113,7 +113,7 @@ const AboutUs = () => {
                 height={750}
                 src={
                   storeCustomizationSetting?.about_us?.content_right_img ||
-                  "/about-us.jpg"
+                  "/timeless/1742303489Untitleddesign35png.png"
                 }
                 alt="logo"
                 className=""
@@ -150,7 +150,7 @@ const AboutUs = () => {
               height={570}
               src={
                 storeCustomizationSetting?.about_us?.content_middle_Img ||
-                "/about-banner.jpg"
+                "/timeless/1742303489Untitleddesign35png.png"
               }
               alt="logo"
               className="block rounded-lg"

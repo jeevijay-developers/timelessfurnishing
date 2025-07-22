@@ -23,35 +23,35 @@ const MainCarousel = () => {
       url: showingUrl(storeCustomizationSetting?.slider?.first_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.first_img) ||
-        "/slider/slider-1.jpg",
+        "/timeless/1742303489Untitleddesign35png.png",
     },
     {
       id: 2,
       url: showingUrl(storeCustomizationSetting?.slider?.second_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.second_img) ||
-        "/slider/slider-2.jpg",
+        "/timeless/1742303489Untitleddesign35png.png",
     },
     {
       id: 3,
       url: showingUrl(storeCustomizationSetting?.slider?.third_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.third_img) ||
-        "/slider/slider-3.jpg",
+        "/timeless/1742303489Untitleddesign35png.png",
     },
     {
       id: 4,
       url: showingUrl(storeCustomizationSetting?.slider?.four_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.four_img) ||
-        "/slider/slider-1.jpg",
+        "/timeless/1742303489Untitleddesign35png.png",
     },
     {
       id: 5,
       url: showingUrl(storeCustomizationSetting?.slider?.five_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.five_img) ||
-        "/slider/slider-2.jpg",
+        "/timeless/1742303489Untitleddesign35png.png",
     },
   ];
 
@@ -97,7 +97,7 @@ const MainCarousel = () => {
           <SwiperSlide className="w-full relative overflow-hidden" key={i + 1}>
             {/* Updated image container with better aspect ratio handling */}
             {/* <div className="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[16/9]"> */}
-            <div className="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[16/9]">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[16/5]">
               {/* <Image
                 src={item.image || "/slider/slider-1.jpg"}
                 alt={item.title || "Slider Image"}
@@ -109,7 +109,9 @@ const MainCarousel = () => {
                 loading="eager"
               /> */}
               <img
-                src={item.image || "/slider/slider-1.jpg"}
+                src={
+                  item.image || "/timeless/1742303489Untitleddesign35png.png"
+                }
                 alt={item.title || "Slider Image"}
                 className="absolute inset-0 w-full h-full z-10  object-cover object-center"
                 loading="eager"

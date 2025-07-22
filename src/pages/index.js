@@ -2,8 +2,8 @@ import { SidebarContext } from "@context/SidebarContext";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import FormalTrouser from "src/formal-trouser/FormalTrouser";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
 
 //internal import
 import Layout from "@layout/Layout";
@@ -23,6 +23,7 @@ import Testimonials from "@components/Testimonials/Testimonials";
 import ClassicShirtCard from "@components/classic-shirt/classicShirtCard";
 import WhyChooseUs from "@components/whyChooseUs/WhyChooseUs";
 import ShirtGallery from "@components/shirt-gallery/ShirtGallery";
+import HomeCategoryWrapper from "@components/HomeCategoryWrapper";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -87,7 +88,6 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 )} */}
               </div>
             </div>
-
             {/* feature category's */}
             {storeCustomizationSetting?.home?.featured_status && (
               // <div className="bg-gray-100 lg:py-16 py-10"> removed this part with below part
@@ -121,14 +121,13 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 </div>
               </div>
             )}
-
             {/* popular products */}
             {storeCustomizationSetting?.home?.popular_products_status && (
               <div className=" bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
                 <div className="mb-10 flex ">
                   <div className=" w-full lg:w-2/5">
                     <h2 className="font-[lora] font-thin text-[2rem] ml-4 md:ml-8 lg:ml-12 lg:text-[3.25rem] mb-2">
-                    Bestseller
+                      Bestseller
                       <CMSkeleton
                         count={1}
                         height={30}
@@ -187,7 +186,6 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 </div>
               </div>
             )}
-
             {/* promotional banner card */}
             {/* {storeCustomizationSetting?.home?.delivery_status && (
               <div className="block mx-auto max-w-screen-2xl">
@@ -198,7 +196,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 </div>
               </div>
             )} */}
-
+            <HomeCategoryWrapper />
             {/* Classic Plain Shirt */}
             <div>
               <h1 className="px-6 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center">
@@ -206,14 +204,11 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               </h1>
               <ClassicShirtCard />
             </div>
-
             <div className="mt-[4.5rem] hover:cursor-pointer">
               <FormalTrouser />
             </div>
-
             <WhyChooseUs />
             <ShirtGallery />
-
             {/* discounted products */}
             {storeCustomizationSetting?.home?.discount_product_status &&
               discountProducts?.length > 0 && (
@@ -269,16 +264,17 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                             ))}
                         </div>
                       )}
-                      {showLoadMoreDiscounted && discountProducts.length > 4 && (
-                        <div className="flex justify-center mt-8">
-                          <button
-                            onClick={handleLoadMoreDiscounted}
-                            className="bg-customPink text-white px-6 py-3 rounded-md hover:bg-customPinkDark transition-colors duration-300 font-medium text-sm sm:text-base"
-                          >
-                            View More
-                          </button>
-                        </div>
-                      )}
+                      {showLoadMoreDiscounted &&
+                        discountProducts.length > 4 && (
+                          <div className="flex justify-center mt-8">
+                            <button
+                              onClick={handleLoadMoreDiscounted}
+                              className="bg-customPink text-white px-6 py-3 rounded-md hover:bg-customPinkDark transition-colors duration-300 font-medium text-sm sm:text-base"
+                            >
+                              View More
+                            </button>
+                          </div>
+                        )}
                     </div>
                   </div>
                 </div>
