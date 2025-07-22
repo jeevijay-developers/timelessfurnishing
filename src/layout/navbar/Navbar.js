@@ -217,18 +217,7 @@ const Navbar = () => {
               )}
             </Link>
           )}
-          {
-            <Link
-              href="/Cancellation-and-Refund"
-              className="font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {/* {showingTranslateValue(
-                storeCustomizationSetting?.navbar?.cancellation_and_Refund
-              )} */}
-              Cancellation And Refund
-            </Link>
-          }
-                    
+          
         </div>
       </div>
     </>
