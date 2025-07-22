@@ -71,12 +71,12 @@ const Navbar = () => {
                   </span>
                 </button>
               </div>
-              <div className="w-24 sm:w-28 mx-auto flex items-center justify-center">
+              <div className="w-24 sm:w-28 my-2 mx-auto flex items-center justify-center">
                 <Link href="/">
                   <img
-                    width={60}
-                    height={60}
-                    className="w-full h-auto "
+                    width={100}
+                    height={100}
+                    style={{ width: "15rem", maxWidth: "100rem" }}
                     priority
                     src="/logo/gray-logo.png"
                     alt="logo"
@@ -217,18 +217,7 @@ const Navbar = () => {
               )}
             </Link>
           )}
-          {
-            <Link
-              href="/Cancellation-and-Refund"
-              className="font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {/* {showingTranslateValue(
-                storeCustomizationSetting?.navbar?.cancellation_and_Refund
-              )} */}
-              Cancellation And Refund
-            </Link>
-          }
-                    
+          
         </div>
       </div>
     </>

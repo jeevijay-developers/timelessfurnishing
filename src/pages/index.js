@@ -24,6 +24,7 @@ import ClassicShirtCard from "@components/classic-shirt/classicShirtCard";
 import WhyChooseUs from "@components/whyChooseUs/WhyChooseUs";
 import ShirtGallery from "@components/shirt-gallery/ShirtGallery";
 import HomeCategoryWrapper from "@components/HomeCategoryWrapper";
+import Image from "next/image";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -89,7 +90,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               </div>
             </div>
             {/* feature category's */}
-            {storeCustomizationSetting?.home?.featured_status && (
+            {/* {storeCustomizationSetting?.home?.featured_status && (
               // <div className="bg-gray-100 lg:py-16 py-10"> removed this part with below part
               <div className="bg-gray-100 ">
                 <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
@@ -103,7 +104,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                           data={storeCustomizationSetting?.home?.feature_title}
                         />
                       </h2>
-                      {/* <p className="text-base font-sans text-gray-600 leading-6">
+                      <p className="text-base font-sans text-gray-600 leading-6">
                         <CMSkeleton
                           count={4}
                           height={10}
@@ -113,20 +114,359 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                             storeCustomizationSetting?.home?.feature_description
                           }
                         />
-                      </p> */}
+                      </p>
                     </div>
                   </div>
 
                   {/* <FeatureCategory /> */}
+            {/* </div>
+              </div>
+            )} */}
+
+            {/* Deal of the Day Section */}
+            <div className="bg-gray-100 py-16">
+              <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
+                <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+                  {/* Left side - Image */}
+                  <div className="w-full lg:w-1/2 flex justify-center">
+                    <div className="relative">
+                      <img
+                        src="/cta/offerOfTheDay.png"
+                        alt="Deal of the Day"
+                        className="w-64 h-64 lg:w-96 lg:h-80 object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Right side - Content */}
+                  <div className="w-full lg:w-1/2 text-center lg:text-left">
+                    <h2 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-4 leading-tight">
+                      DEAL
+                      <br />
+                      OF THE DAY
+                    </h2>
+                    <div className="w-16 h-1 bg-gray-400 mb-6 mx-auto lg:mx-0"></div>
+
+                    <h3 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4 uppercase tracking-wide">
+                      CLICK SHOP NOW FOR ALL DEAL OF THE PRODUCT
+                    </h3>
+
+                    <p className="text-gray-600 mb-6 leading-relaxed text-sm lg:text-base">
+                      Discover our exclusive deal of the day! Enjoy unbeatable
+                      prices on premium furniture and home decor. Shop now to
+                      upgrade your space with style and comfort. Hurry, this
+                      offer is available for a limited time only!
+                    </p>
+
+                    <button className="bg-customPink hover:bg-customPinkDark text-white px-8 py-3 rounded-md font-medium transition-colors duration-300 uppercase tracking-wide">
+                      Shop Now
+                    </button>
+                  </div>
                 </div>
               </div>
-            )}
+            </div>
+
+            {/* Best Month Offer Section */}
+            <div className="bg-white py-16">
+              <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
+                {/* Header */}
+                <div className="text-center mb-12">
+                  <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+                    Best Month offer
+                  </h2>
+                  <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Discover premium furniture collections with exceptional
+                    quality and modern design. Transform your space with our
+                    curated selection of contemporary pieces.
+                  </p>
+                </div>
+
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Left Main Feature */}
+                  <div className="lg:col-span-2 relative">
+                    <div className="bg-gray-50 rounded-3xl p-8 lg:p-12 min-h-[500px] flex items-center">
+                      <div className="w-full flex flex-col lg:flex-row items-center gap-8">
+                        {/* Content */}
+                        <div className="lg:w-1/2 text-center lg:text-left">
+                          <h3 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                            Premium Furniture
+                          </h3>
+                          <p className="text-gray-600 text-lg mb-6 uppercase tracking-wide">
+                            NEW AUTUMN ARRIVAL 2024
+                          </p>
+                          <button className="bg-customPink hover:bg-customPinkDark text-white px-8 py-3 rounded-full font-medium transition-colors duration-300">
+                            Explore Collection
+                          </button>
+                        </div>
+
+                        {/* Main Product Image */}
+                        <div className="lg:w-1/2 relative">
+                          <div className="relative">
+                            {/* Green decorative circle */}
+                            <div className="absolute -left-16 top-1/2 transform -translate-y-1/2 w-32 h-32 lg:w-48 lg:h-48 bg-green-200 rounded-full opacity-60 -z-10"></div>
+                            {/* Placeholder for main chair image */}
+                            <div className="w-80 h-80 bg-gray-200 rounded-lg flex items-center justify-center">
+                              <Image
+                                src="/chairs/chair1.png"
+                                alt="Main Chair"
+                                layout="fill"
+                                objectFit="cover"
+                                className="rounded-lg"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side Products */}
+                  <div className="space-y-6 flex flex-col justify-around">
+                    {/* Top Product Card */}
+                    <div className="bg-gray-50 rounded-2xl p-6 relative overflow-hidden">
+                      <div className="flex items-center gap-4">
+                        <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">
+                          <Image
+                            src="/chairs/chair2.png"
+                            alt="Main Chair"
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-lg"
+                          />
+                        </div>
+                      </div>
+                      {/* Green decorative element */}
+                      <div className="absolute -right-8 -top-8 w-20 h-20 bg-green-200 rounded-full opacity-40"></div>
+                    </div>
+
+                    {/* Bottom Product Card */}
+                    <div className="bg-gray-50 rounded-2xl p-6 relative overflow-hidden">
+                      <div className="flex items-center gap-4">
+                        <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">
+                          <Image
+                            src="/chairs/chair3.png"
+                            alt="Sofa"
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-lg"
+                          />
+                        </div>
+                      </div>
+                      {/* Blue decorative element */}
+                      <div className="absolute -right-8 -top-8 w-20 h-20 bg-blue-200 rounded-full opacity-40"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Features Section */}
+            <div className="bg-gray-900 py-12">
+              <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {/* Feature 1 - Quality */}
+                  <div className="flex items-center gap-4 text-white">
+                    <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Manage Quality</h3>
+                      <p className="text-gray-300 text-sm">
+                        Best Quality Guarantee
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Feature 2 - Win Prize */}
+                  <div className="flex items-center gap-4 text-white">
+                    <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732L14.146 12.8l-1.179 4.456a1 1 0 01-1.934 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732L9.854 7.2l1.179-4.456A1 1 0 0112 2z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">
+                        Win $100 To Shop
+                      </h3>
+                      <p className="text-gray-300 text-sm">Enter Now</p>
+                    </div>
+                  </div>
+
+                  {/* Feature 3 - Support */}
+                  <div className="flex items-center gap-4 text-white">
+                    <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.98 5.98 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-1.588-1.588A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.539-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.539a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">
+                        Best Online Support
+                      </h3>
+                      <p className="text-gray-300 text-sm">
+                        Hour: 10:00AM - 5:00PM
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Feature 4 - Money Guarantee */}
+                  <div className="flex items-center gap-4 text-white">
+                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                        <path
+                          fillRule="evenodd"
+                          d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Money Guarantee</h3>
+                      <p className="text-gray-300 text-sm">With A 30 Days</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Our Partners Section */}
+            <div className="bg-gray-50 py-20 my-20">
+              <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mx-8">
+                  {/* Left Content */}
+                  <div className="lg:col-span-1">
+                    <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
+                      Our Partners
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed">
+                      We collaborate with leading brands and trusted partners to
+                      bring you the finest furniture and home decor solutions.
+                      Our partnerships ensure quality, reliability, and
+                      exceptional value for our customers.
+                    </p>
+                  </div>
+
+                  {/* Right Partners Grid */}
+                  <div className="lg:col-span-1">
+                    <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                      <Image
+                        src="/partners/acer.jpg"
+                        alt="Acer Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/samsung.jpg"
+                        alt="Samsung Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/nokia.jpg"
+                        alt="Nokia Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/sony.jpg"
+                        alt="Sony Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/xaomi.jpg"
+                        alt="Xiaomi Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/ticwatch.jpg"
+                        alt="Ticwatch Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/lemfo.jpg"
+                        alt="Lemfo Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/lenovo.jpg"
+                        alt="Lenovo Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/huawei.jpg"
+                        alt="Huawei Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/adyce.jpg"
+                        alt="Adyce Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/nike.jpg"
+                        alt="Nike Logo"
+                        width={150}
+                        height={40}
+                      />
+                      <Image
+                        src="/partners/genius.jpg"
+                        alt="Genius Logo"
+                        width={150}
+                        height={40}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              )}
+            </div>
+
             {/* popular products */}
-            {storeCustomizationSetting?.home?.popular_products_status && (
+            {/* {storeCustomizationSetting?.home?.popular_products_status && (
               <div className=" bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
                 <div className="mb-10 flex ">
                   <div className=" w-full lg:w-2/5">
                     <h2 className="font-[lora] font-thin text-[2rem] ml-4 md:ml-8 lg:ml-12 lg:text-[3.25rem] mb-2">
+                      Bestseller
                       Bestseller
                       <CMSkeleton
                         count={1}
@@ -134,8 +474,8 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                         loading={loading}
                         data={storeCustomizationSetting?.home?.popular_title}
                       />
-                    </h2>
-                    {/* <p className="text-base font-sans text-gray-600 leading-6">
+                    </h2> */}
+            {/* <p className="text-base font-sans text-gray-600 leading-6">
                       <CMSkeleton
                         count={5}
                         height={10}
@@ -146,7 +486,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                         }
                       />
                     </p> */}
-                  </div>
+            {/* </div>
                 </div>
                 <div className="flex">
                   <div className="w-full">
@@ -186,6 +526,8 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 </div>
               </div>
             )}
+            )} */}
+
             {/* promotional banner card */}
             {/* {storeCustomizationSetting?.home?.delivery_status && (
               <div className="block mx-auto max-w-screen-2xl">
@@ -198,7 +540,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             )} */}
             <HomeCategoryWrapper />
             {/* Classic Plain Shirt */}
-            <div>
+            {/* <div>
               <h1 className="px-6 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center">
                 Classic Shirts
               </h1>
@@ -209,8 +551,10 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             </div>
             <WhyChooseUs />
             <ShirtGallery />
+            <ShirtGallery /> */}
+
             {/* discounted products */}
-            {storeCustomizationSetting?.home?.discount_product_status &&
+            {/* {storeCustomizationSetting?.home?.discount_product_status &&
               discountProducts?.length > 0 && (
                 <div
                   id="discount"
@@ -229,8 +573,8 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                           }
                         />
                       </h2>
-                      {/* <p className="text-base font-sans text-gray-600 leading-6">
-                        <CMSkeleton
+                      {/* <p className="text-base font-sans text-gray-600 leading-6"> */}
+            {/* <CMSkeleton
                           count={5}
                           height={20}
                           loading={loading}
@@ -239,9 +583,9 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                               ?.latest_discount_description
                           }
                         />
-                      </p> */}
+                      </p> 
                     </div>
-                  </div>
+                  </div> 
                   <div className="flex flex-row flex-wrap gap-5">
                     <div className="w-full">
                       {loading ? (
@@ -278,9 +622,9 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                     </div>
                   </div>
                 </div>
-              )}
+              )}*/}
           </div>
-          <Testimonials />
+          {/* <Testimonials /> */}
         </Layout>
       )}
     </>
