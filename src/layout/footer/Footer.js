@@ -9,6 +9,7 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from "react-share";
+import { CiInstagram } from "react-icons/ci";
 
 //internal import
 import { getUserSession } from "@lib/auth";
@@ -335,6 +336,19 @@ const Footer = () => {
                           className="block text-center mx-auto text-gray-500 hover:text-white"
                         >
                           <FacebookIcon size={34} round />
+                        </Link>
+                      </li>
+                    )}
+                    {storeCustomizationSetting?.footer?.social_facebook && (
+                      <li className="flex items-center mr-3 transition ease-in-out duration-500">
+                        <Link
+                          href={`https://www.instagram.com/timeless.furnishing`}
+                          aria-label="Social Link"
+                          rel="noreferrer"
+                          target="_blank"
+                          className="block text-center mx-auto  bg-red-500 text-white hover:bg-red-600 rounded-full p-1"
+                        >
+                          <CiInstagram size={30} round />
                         </Link>
                       </li>
                     )}
