@@ -277,14 +277,14 @@ const Footer = () => {
             <div className="pb-3.5 sm:pb-0 lg:text-center ">
               {/* ml-auto lg:text-right*/}
               <div className="flex justify-center">
-                  {/* lg:ml-auto pr-0 */}
-                  <Image
-                    width={180}
-                    height={180}
-                    className="object-contain"
-                    src={"/logo/gray-logo.png"}
-                    alt="logo"
-                  />
+                {/* lg:ml-auto pr-0 */}
+                <Image
+                  width={180}
+                  height={180}
+                  className="object-contain"
+                  src={"/logo/gray-logo.png"}
+                  alt="logo"
+                />
               </div>
               <p className="leading-7 font-sans text-sm text-gray-600 mt-3  max-w-[300px] break-words">
                 <CMSkeleton
@@ -438,7 +438,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-customPink"
           >
-            ocentury
+            Timeless Furnishing
           </Link>
           , All rights reserved.
         </p>

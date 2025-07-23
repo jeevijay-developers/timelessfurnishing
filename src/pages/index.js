@@ -129,7 +129,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 <div className="mb-10 flex ">
                   <div className=" w-full lg:w-2/5">
                     <h2 className="font-[lora] font-thin text-[2rem] ml-4 md:ml-8 lg:ml-12 lg:text-[3.25rem] mb-2">
-                      Bestseller
+                      {/* Bestseller */}
                       <CMSkeleton
                         count={1}
                         height={30}
