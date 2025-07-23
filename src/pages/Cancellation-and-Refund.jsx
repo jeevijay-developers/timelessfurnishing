@@ -49,8 +49,6 @@ const PrivacyPolicy = () => {
           <CMSkeleton count={15} height={15} loading={loading} /> */}
           <div className="bg-white min-h-screen  px-4 sm:px-10">
             <div className="max-w-4xl mx-auto text-gray-800 font-sans">
-           
-
               <p className="mb-6">
                 At <strong>O'Century</strong>, a division of Kota Textiles, we
                 are committed to providing premium cotton fabrics and a seamless
@@ -78,9 +76,9 @@ const PrivacyPolicy = () => {
                   or call{" "}
                   <a
                     className="text-blue-600 underline"
-                    href="tel:+917014267489"
+                    href="tel:+918824765602"
                   >
-                    +91-7014267489
+                    +91-8824765602
                   </a>
                   .
                 </li>
@@ -135,8 +133,8 @@ const PrivacyPolicy = () => {
               </p>
               <p className="mb-2">
                 <strong>Phone:</strong>{" "}
-                <a className="text-blue-600 underline" href="tel:+917014267489">
-                  +91-7014267489
+                <a className="text-blue-600 underline" href="tel:+918824765602">
+                  +91-8824765602
                 </a>
               </p>
               <p>

@@ -38,7 +38,7 @@ import ImageCarousel from "@components/carousel/ImageCarousel";
 // at the top of your file
 import dynamic from "next/dynamic";
 
-const InnerImageZoom = dynamic(() => import('react-inner-image-zoom'), {
+const InnerImageZoom = dynamic(() => import("react-inner-image-zoom"), {
   ssr: false,
 });
 
@@ -461,7 +461,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             <p className="text-xs sm:text-sm text-gray-700 font-medium">
                               Call Us To Order By Mobile Number :{" "}
                               <span className="text-emerald-700 font-semibold">
-                                +91-7014267489
+                                +91-8824765602
                               </span>{" "}
                             </p>
                           </div>

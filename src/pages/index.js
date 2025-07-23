@@ -89,6 +89,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 )} */}
               </div>
             </div>
+
             {/* feature category's */}
             {/* {storeCustomizationSetting?.home?.featured_status && (
               // <div className="bg-gray-100 lg:py-16 py-10"> removed this part with below part
@@ -122,7 +123,71 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* </div>
               </div>
             )} */}
-
+            {/* popular products */}
+            {storeCustomizationSetting?.home?.popular_products_status && (
+              <div className=" bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
+                <div className="mb-10 flex ">
+                  <div className=" w-full lg:w-2/5">
+                    <h2 className="font-[lora] font-thin text-[2rem] ml-4 md:ml-8 lg:ml-12 lg:text-[3.25rem] mb-2">
+                      Bestseller
+                      <CMSkeleton
+                        count={1}
+                        height={30}
+                        loading={loading}
+                        data={storeCustomizationSetting?.home?.popular_title}
+                      />
+                    </h2>
+                    {/* <p className="text-base font-sans text-gray-600 leading-6">
+                      <CMSkeleton
+                        count={5}
+                        height={10}
+                        error={error}
+                        loading={loading}
+                        data={
+                          storeCustomizationSetting?.home?.popular_description
+                        }
+                      />
+                    </p> */}
+                  </div>
+                </div>
+                <div className="flex">
+                  <div className="w-full">
+                    {loading ? (
+                      <CMSkeleton
+                        count={20}
+                        height={20}
+                        error={error}
+                        loading={loading}
+                      />
+                    ) : (
+                      <>
+                        <div className="flex flex-wrap gap-2 md:gap-4 lg:gap-6 justify-center px-2 sm:px-4">
+                          {popularProducts
+                            ?.slice(0, productsToShow)
+                            .map((product) => (
+                              <ProductCard
+                                key={product._id}
+                                product={product}
+                                attributes={attributes}
+                              />
+                            ))}
+                        </div>
+                        {showLoadMore && popularProducts.length > 4 && (
+                          <div className="flex justify-center mt-8">
+                            <button
+                              onClick={handleLoadMore}
+                              className="bg-customPink text-white px-6 py-3 rounded-md hover:bg-customPinkDark transition-colors duration-300 font-medium text-sm sm:text-base"
+                            >
+                              View More
+                            </button>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
             {/* Deal of the Day Section */}
             <div className="bg-gray-100 py-16">
               <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
@@ -457,76 +522,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                   </div>
                 </div>
               </div>
-              
             </div>
-
-            {/* popular products */}
-            {/* {storeCustomizationSetting?.home?.popular_products_status && (
-              <div className=" bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
-                <div className="mb-10 flex ">
-                  <div className=" w-full lg:w-2/5">
-                    <h2 className="font-[lora] font-thin text-[2rem] ml-4 md:ml-8 lg:ml-12 lg:text-[3.25rem] mb-2">
-                      Bestseller
-                      Bestseller
-                      <CMSkeleton
-                        count={1}
-                        height={30}
-                        loading={loading}
-                        data={storeCustomizationSetting?.home?.popular_title}
-                      />
-                    </h2> */}
-            {/* <p className="text-base font-sans text-gray-600 leading-6">
-                      <CMSkeleton
-                        count={5}
-                        height={10}
-                        error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.home?.popular_description
-                        }
-                      />
-                    </p> */}
-            {/* </div>
-                </div>
-                <div className="flex">
-                  <div className="w-full">
-                    {loading ? (
-                      <CMSkeleton
-                        count={20}
-                        height={20}
-                        error={error}
-                        loading={loading}
-                      />
-                    ) : (
-                      <>
-                        <div className="flex flex-wrap gap-2 md:gap-4 lg:gap-6 justify-center px-2 sm:px-4">
-                          {popularProducts
-                            ?.slice(0, productsToShow)
-                            .map((product) => (
-                              <ProductCard
-                                key={product._id}
-                                product={product}
-                                attributes={attributes}
-                              />
-                            ))}
-                        </div>
-                        {showLoadMore && popularProducts.length > 4 && (
-                          <div className="flex justify-center mt-8">
-                            <button
-                              onClick={handleLoadMore}
-                              className="bg-customPink text-white px-6 py-3 rounded-md hover:bg-customPinkDark transition-colors duration-300 font-medium text-sm sm:text-base"
-                            >
-                              View More
-                            </button>
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
-            )} */}
 
             {/* promotional banner card */}
             {/* {storeCustomizationSetting?.home?.delivery_status && (
@@ -554,7 +550,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             <ShirtGallery /> */}
 
             {/* discounted products */}
-            {/* {storeCustomizationSetting?.home?.discount_product_status &&
+            {storeCustomizationSetting?.home?.discount_product_status &&
               discountProducts?.length > 0 && (
                 <div
                   id="discount"
@@ -573,8 +569,8 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                           }
                         />
                       </h2>
-                      {/* <p className="text-base font-sans text-gray-600 leading-6"> */}
-            {/* <CMSkeleton
+                      <p className="text-base font-sans text-gray-600 leading-6">
+                        <CMSkeleton
                           count={5}
                           height={20}
                           loading={loading}
@@ -583,9 +579,9 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                               ?.latest_discount_description
                           }
                         />
-                      </p> 
+                      </p>
                     </div>
-                  </div> 
+                  </div>
                   <div className="flex flex-row flex-wrap gap-5">
                     <div className="w-full">
                       {loading ? (
@@ -622,7 +618,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                     </div>
                   </div>
                 </div>
-              )}*/}
+              )}
           </div>
           {/* <Testimonials /> */}
         </Layout>
