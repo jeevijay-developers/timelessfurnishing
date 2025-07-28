@@ -49,7 +49,7 @@ const FeatureCategory = () => {
             Impressive Collection for your Dream Home
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-6 w-full max-w-6xl">
+          <div className="grid grid-cols-2 sm:grid-cols-3  gap-6 w-full max-w-6xl">
             {data[0]?.children?.map((category, i) => (
               <div
                 key={i + 1}
@@ -61,14 +61,14 @@ const FeatureCategory = () => {
                   )
                 }
               >
-                <div className="w-32 h-32 relative  rounded-full overflow-hidden flex items-center justify-center border border-gray-200 shadow-md mb-3">
+                <div className="w-48 h-48 relative  rounded-full overflow-hidden flex items-center justify-center border border-gray-200 shadow-md mb-3">
                   {category.icon ? (
                     <Image
                       src={category?.icon}
                       alt={showingTranslateValue(category?.name)}
-                      width={128}
-                      height={128}
-                      objectFit="cover cursor-pointer"
+                      width={200}
+                      height={200}
+                      className="object-cover cursor-pointer"
                     />
                   ) : (
                     <Image

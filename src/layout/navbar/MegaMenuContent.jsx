@@ -10,29 +10,13 @@ import Loading from "@components/preloader/Loading";
 const MegaMenuContent = ({ category, onMouseLeave }) => {
   const { showingTranslateValue } = useUtilsFunction();
 
-  // State to track the active sub-category
   const [activeSubCategory, setActiveSubCategory] = useState(null);
 
-  // Set the first sub-category as active by default
   useEffect(() => {
     if (category?.children?.length > 0) {
       setActiveSubCategory(category.children[0]);
     }
   }, [category]);
-
-  // Fetch products for the hovered sub-category
-  const {
-    data: products,
-    isLoading: productsLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["mega-menu-products", activeSubCategory?._id],
-    queryFn: () =>
-      ProductServices.getShowingProducts({
-        category: activeSubCategory?._id,
-      }),
-    enabled: !!activeSubCategory,
-  });
 
   if (!category) return null;
 
@@ -50,14 +34,17 @@ const MegaMenuContent = ({ category, onMouseLeave }) => {
               className="w-full"
               onMouseEnter={() => setActiveSubCategory(subCategory)}
             >
-              <h4 className="text-sm font-bold text-gray-900 mb-2 border-b-2 border-transparent hover:border-customPink cursor-pointer">
+              <Link
+                className="text-sm font-bold text-gray-900 mb-2 border-b-2 border-transparent hover:border-customPink cursor-pointer"
+                href={`/search?category=${subCategory.slug}&_id=${subCategory._id}`}
+              >
                 {showingTranslateValue(subCategory.name)}
-              </h4>
+              </Link>
               <ul className="space-y-1">
                 {(subCategory.children || []).slice(0, 7).map((child) => (
                   <li key={child._id}>
                     <Link
-                      href={`/category/${child.slug || child._id}`}
+                      href={`/search?category=${child.slug}&_id=${child._id}`}
                       className="text-xs text-gray-600 hover:text-customPink block"
                     >
                       {showingTranslateValue(child.name)}
@@ -67,46 +54,6 @@ const MegaMenuContent = ({ category, onMouseLeave }) => {
               </ul>
             </div>
           ))}
-        </div>
-
-        {/* Horizontal Divider */}
-        <hr />
-
-        {/* Products Preview Section */}
-        <div>
-          <h4 className="text-sm font-bold text-gray-900 mb-4">
-            Top Products in {showingTranslateValue(activeSubCategory?.name)}
-          </h4>
-          {productsLoading ? (
-            <Loading loading={productsLoading} />
-          ) : isError ? (
-            <p className="text-xs text-red-500">Could not load products.</p>
-          ) : products && products.length > 0 ? (
-            <div className="grid grid-cols-5 gap-4">
-              {products.slice(0, 5).map((product) => (
-                <Link
-                  key={product._id}
-                  href={`/product/${product.slug}`}
-                  className="flex flex-col items-center text-center group"
-                >
-                  <div className="w-24 h-24 rounded overflow-hidden mb-2">
-                    <Image
-                      src={product.image[0]}
-                      alt={product.title}
-                      width={96}
-                      height={96}
-                      className="object-cover"
-                    />
-                  </div>
-                  <p className="text-sm font-medium text-gray-800 group-hover:text-customPink">
-                    {showingTranslateValue(product.title)}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <p className="text-xs text-gray-500">No products found.</p>
-          )}
         </div>
       </div>
     </div>
