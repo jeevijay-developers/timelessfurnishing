@@ -2,7 +2,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { IoChevronForwardSharp } from "react-icons/io5";
+// IoChevronForwardSharp is not needed for the desired UI
+// import { IoChevronForwardSharp } from "react-icons/io5";
 
 //internal import
 import CategoryServices from "@services/CategoryServices";
@@ -40,70 +41,52 @@ const FeatureCategory = () => {
       {loading ? (
         <CMSkeleton count={10} height={20} error={error} loading={loading} />
       ) : (
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6">
-          {data[0]?.children?.map((category, i) => (
-            <li className="group" key={i + 1}>
-              <div className="flex w-full h-full border border-gray-100 shadow-sm bg-white p-4 cursor-pointer transition duration-200 ease-linear transform group-hover:shadow-lg">
-                <div className="flex items-center">
-                  <div>
-                    {category.icon ? (
-                      <Image
-                        src={category?.icon}
-                        alt="category"
-                        width={35}
-                        height={35}
-                      />
-                    ) : (
-                      <Image
-                        src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                        alt="category"
-                        width={35}
-                        height={35}
-                      />
-                    )}
-                  </div>
+        <div className="flex flex-col items-center justify-center p-6 bg-white mt-20">
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">
+            Featured Category
+          </h2>
+          <p className="text-gray-500 mb-8">
+            Impressive Collection for your Dream Home
+          </p>
 
-                  <div className="pl-4">
-                    <h3
-                      onClick={() =>
-                        handleCategoryClick(
-                          category._id,
-                          showingTranslateValue(category?.name)
-                        )
-                      }
-                      className="text-sm text-gray-600 font-medium leading-tight line-clamp-1 group-hover:text-orange-500"
-                    >
-                      {showingTranslateValue(category?.name)}
-                    </h3>
-                    <ul className="pt-1 mt-1">
-                      {category?.children?.slice(0, 3).map((child) => (
-                        <li
-                          key={child._id}
-                          className="hover:text-orange-500 hover:ml-2 transition-all duration-150"
-                        >
-                          <a
-                            onClick={() =>
-                              handleCategoryClick(
-                                child._id,
-                                showingTranslateValue(child?.name)
-                              )
-                            }
-                            className="flex items-center font-serif text-xs text-gray-400 cursor-pointer"
-                          >
-                            <span className="text-xs text-gray-400 ">
-                              <IoChevronForwardSharp />
-                            </span>
-                            {showingTranslateValue(child?.name)}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-6 w-full max-w-6xl">
+            {data[0]?.children?.map((category, i) => (
+              <div
+                key={i + 1}
+                className="flex flex-col items-center cursor-pointer transition-transform duration-200 ease-in-out transform hover:scale-105"
+                onClick={() =>
+                  handleCategoryClick(
+                    category._id,
+                    showingTranslateValue(category?.name)
+                  )
+                }
+              >
+                <div className="w-32 h-32 relative  rounded-full overflow-hidden flex items-center justify-center border border-gray-200 shadow-md mb-3">
+                  {category.icon ? (
+                    <Image
+                      src={category?.icon}
+                      alt={showingTranslateValue(category?.name)}
+                      width={128}
+                      height={128}
+                      objectFit="cover cursor-pointer"
+                    />
+                  ) : (
+                    <Image
+                      src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                      alt="placeholder category"
+                      width={128}
+                      height={128}
+                      objectFit="cover"
+                    />
+                  )}
                 </div>
+                <p className="text-center text-sm font-medium text-gray-700">
+                  {showingTranslateValue(category?.name)}
+                </p>
               </div>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
       )}
     </>
   );

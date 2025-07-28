@@ -56,23 +56,20 @@ const Navbar = () => {
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 relative">
           <div className="flex  flex-col items-center py-1">
             {/* Top Section - Logo and Icons */}
-            <div className="w-full grid grid-cols-3 items-center justify-between">
-              {/* Logo Section - Left */}
-              {/* this code enables drawer */}
-              <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
-              <div>
+            <div className="w-full flex items-center justify-between py-2">
+              {/* Left Section - Logo and Drawer */}
+              <div className="flex items-center space-x-4">
+                {/* Drawer Button */}
                 <button
                   aria-label="Bar"
                   onClick={toggleCategoryDrawer}
-                  className="flex items-center justify-center flex-shrink-0 h-auto relative focus:outline-none"
+                  className="lg:hidden text-xl text-black"
                 >
-                  <span className="lg:hidden z-30 text-xl text-black">
-                    <FiAlignLeft className="w-6 h-6 " />
-                  </span>
+                  <FiAlignLeft className="w-6 h-6" />
                 </button>
-              </div>
-              <div className="w-24 sm:w-28 my-2 mx-auto flex items-center justify-center">
-                <Link href="/">
+
+                {/* Logo */}
+                <Link href="/" className="block w-24 sm:w-28">
                   <img
                     width={100}
                     height={100}
@@ -83,15 +80,16 @@ const Navbar = () => {
                   />
                 </Link>
               </div>
-              {/* <MobileFooter/> */}
-              {/* Icons Section - Right */}
-              <div className="flex items-center space-x-3 lg:space-x-10  justify-end">
+
+              {/* Right Section - Icons */}
+              <div className="flex items-center space-x-3 lg:space-x-10">
                 <button
                   className="text-black text-2xl font-bold"
                   aria-label="Alert"
                 >
                   <FiBell className="w-6 h-6" />
                 </button>
+
                 <button
                   aria-label="Total"
                   onClick={toggleCartDrawer}
@@ -100,8 +98,9 @@ const Navbar = () => {
                   <span className="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
                     {totalItems}
                   </span>
-                  <FiShoppingCart className="w-6 h-6 " />
+                  <FiShoppingCart className="w-6 h-6" />
                 </button>
+
                 <button
                   className="text-black text-2xl hover:cursor-pointer font-bold hidden lg:block"
                   aria-label="Login"
@@ -128,7 +127,7 @@ const Navbar = () => {
                     </Link>
                   ) : (
                     <Link href="/auth/login">
-                      <FaRegUser className="w-6 h-6 " />
+                      <FaRegUser className="w-6 h-6" />
                     </Link>
                   )}
                 </button>
@@ -138,7 +137,7 @@ const Navbar = () => {
           {/* Navigation Items - Below Logo */}
         </div>
         {/* Navigation Items */}
-        <div className="hidden lg:flex items-center justify-center py-3 absolute z-[41] bg-transparent w-full space-x-6 hover:bg-white transition-colors duration-500 ease-in-out mx-auto">
+        <div className="hidden lg:flex items-center justify-center py-3 absolute  z-[41] bg-transparent w-full space-x-6 bg-white transition-colors duration-500 ease-in-out mx-auto">
           <Link
             href="/"
             className="font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
@@ -217,7 +216,6 @@ const Navbar = () => {
               )}
             </Link>
           )}
-          
         </div>
       </div>
     </>
