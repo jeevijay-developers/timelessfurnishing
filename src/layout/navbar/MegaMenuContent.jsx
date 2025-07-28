@@ -25,7 +25,7 @@ const MegaMenuContent = ({ category, onMouseLeave }) => {
       className="absolute top-full left-0 w-full bg-white shadow-xl z-50"
       onMouseLeave={onMouseLeave}
     >
-      <div className="max-w-screen-2xl mx-auto px-6 py-8 flex flex-col gap-8">
+      <div className="max-w-screen-2xl mx-auto px-6 py-8 flex flex-col  gap-8">
         {/* Sub-categories Section */}
         <div className="grid grid-cols-4 gap-6">
           {category.children.map((subCategory) => (

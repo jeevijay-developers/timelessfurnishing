@@ -101,9 +101,10 @@ const Navbar = () => {
 
               {/* Right Section - Icons */}
               <div className="flex items-center space-x-3 lg:space-x-10">
-                
+                {/* this code enables drawer */}
+                <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
                 {/* pages */}
-               <NavbarPagesPopover/>
+                <NavbarPagesPopover />
                 <button
                   className="text-black text-2xl font-bold"
                   aria-label="Alert"
