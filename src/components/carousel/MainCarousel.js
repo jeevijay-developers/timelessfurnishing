@@ -113,7 +113,7 @@ const MainCarousel = () => {
                   item.image || "/timeless/1742303489Untitleddesign35png.png"
                 }
                 alt={item.title || "Slider Image"}
-                className="absolute inset-0 w-full h-full z-10  object-cover object-center"
+                className="absolute inset-0 w-full h-full z-10  object-contain md:object-cover object-center"
                 loading="eager"
                 style={{ imageRendering: "auto" }} // optional: for controlling rendering
               />
