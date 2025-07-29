@@ -377,7 +377,7 @@ const useCheckoutSubmit = (storeSetting) => {
         key: settings?.razorpay_id,
         amount,
         currency,
-        name: "O'Century Store",
+        name: "Timeless Furnishing",
         description: "This is the total cost of your purchase",
         order_id: id,
         handler: async (response) => {
