@@ -25,9 +25,9 @@ const MegaMenuContent = ({ category, onMouseLeave }) => {
       className="absolute top-full left-0 w-full bg-white shadow-xl z-50"
       onMouseLeave={onMouseLeave}
     >
-      <div className="max-w-screen-2xl mx-auto px-6 py-8 flex flex-col  gap-8">
+      <div className="max-w-screen-2xl  mx-auto px-6 py-8 flex flex-col  gap-8">
         {/* Sub-categories Section */}
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-4 gap-6 divide-x divide-gray-900">
           {category.children.map((subCategory) => (
             <div
               key={subCategory._id}
@@ -35,17 +35,17 @@ const MegaMenuContent = ({ category, onMouseLeave }) => {
               onMouseEnter={() => setActiveSubCategory(subCategory)}
             >
               <Link
-                className="text-sm font-bold text-gray-900 mb-2 border-b-2 border-transparent hover:border-customPink cursor-pointer"
+                className="text-sm font-bold pl-6 text-gray-900 mb-2 border-b-2 border-transparent hover:underline cursor-pointer inline-block"
                 href={`/search?category=${subCategory.slug}&_id=${subCategory._id}`}
               >
                 {showingTranslateValue(subCategory.name)}
               </Link>
-              <ul className="space-y-1">
+              <ul className="space-y-1 pl-6">
                 {(subCategory.children || []).slice(0, 7).map((child) => (
                   <li key={child._id}>
                     <Link
                       href={`/search?category=${child.slug}&_id=${child._id}`}
-                      className="text-xs text-gray-600 hover:text-customPink block"
+                      className="text-xs text-gray-600 hover:text-orange-600 inline-block"
                     >
                       {showingTranslateValue(child.name)}
                     </Link>

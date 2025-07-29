@@ -37,5 +37,25 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
     require("@tailwindcss/aspect-ratio"),
+    function ({ addComponents }) {
+      addComponents({
+        ".underline-hover": {
+          position: "relative",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            bottom: "-4px",
+            left: "0",
+            height: "2px",
+            width: "0",
+            backgroundColor: "currentColor",
+            transition: "width 0.3s ease",
+          },
+          "&:hover::after": {
+            width: "100%",
+          },
+        },
+      });
+    },
   ],
 };

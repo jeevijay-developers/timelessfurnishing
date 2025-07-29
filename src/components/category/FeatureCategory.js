@@ -61,7 +61,7 @@ const FeatureCategory = () => {
                   )
                 }
               >
-                <div className="w-48 h-48 relative  rounded-full overflow-hidden flex items-center justify-center border border-gray-200 shadow-md mb-3">
+                <div className= " w-32 md:w-48   h-32 md:h-48 relative  rounded-full overflow-hidden flex items-center justify-center border border-gray-200 shadow-md mb-3">
                   {category.icon ? (
                     <Image
                       src={category?.icon}

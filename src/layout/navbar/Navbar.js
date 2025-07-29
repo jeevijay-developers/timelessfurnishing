@@ -76,9 +76,8 @@ const Navbar = () => {
       <div className="top-0 z-40" onMouseLeave={handleMouseLeave}>
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 relative">
           <div className="flex flex-col items-center py-1">
-            {/* Top Section - Logo and Icons */}
+            {/* Top Row - Logo & Icons */}
             <div className="w-full flex items-center justify-between py-2">
-              {/* Left Section - Logo and Drawer */}
               <div className="flex items-center space-x-4">
                 <button
                   aria-label="Bar"
@@ -99,23 +98,40 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              {/* Right Section - Icons */}
+              {/* Desktop Search Bar */}
+              <div className="hidden sm:block w-[50%]">
+                <form
+                  onSubmit={handleSubmit}
+                  className="relative flex items-center bg-white shadow-sm rounded-md w-full"
+                >
+                  <input
+                    onChange={(e) => setSearchText(e.target.value)}
+                    value={searchText}
+                    className="form-input w-full pl-4 pr-14 text-sm h-10 rounded-md border border-gray-300 focus:border-gray-400 outline-none"
+                    placeholder={t("search-placeholder")}
+                  />
+                  <button
+                    type="submit"
+                    className="absolute right-0 top-0 h-full px-4 text-xl text-gray-400 hover:text-gray-700"
+                  >
+                    <IoSearchOutline />
+                  </button>
+                </form>
+              </div>
+
+              {/* Icons */}
               <div className="flex items-center space-x-3 lg:space-x-10">
-                {/* this code enables drawer */}
                 <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
-                {/* pages */}
-                <NavbarPagesPopover />
                 <button
                   className="text-black text-2xl font-bold"
                   aria-label="Alert"
                 >
                   <FiBell className="w-6 h-6" />
                 </button>
-
                 <button
-                  aria-label="Total"
                   onClick={toggleCartDrawer}
                   className="relative text-black text-2xl font-bold"
+                  aria-label="Total"
                 >
                   <span className="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
                     {totalItems}
@@ -123,14 +139,11 @@ const Navbar = () => {
                   <FiShoppingCart className="w-6 h-6" />
                 </button>
                 <button
-                  className="text-black text-2xl hover:cursor-pointer font-bold hidden lg:block"
+                  className="text-black text-2xl hidden lg:block"
                   aria-label="Login"
                 >
                   {userInfo?.image ? (
-                    <Link
-                      href="/user/dashboard"
-                      className="relative top-1 w-6 h-6"
-                    >
+                    <Link href="/user/dashboard">
                       <Image
                         width={29}
                         height={29}
@@ -140,12 +153,7 @@ const Navbar = () => {
                       />
                     </Link>
                   ) : userInfo?.name ? (
-                    <Link
-                      href="/user/dashboard"
-                      className="leading-none font-bold font-serif block"
-                    >
-                      {userInfo.name[0]}
-                    </Link>
+                    <Link href="/user/dashboard">{userInfo.name[0]}</Link>
                   ) : (
                     <Link href="/auth/login">
                       <FaRegUser className="w-6 h-6" />
@@ -153,6 +161,27 @@ const Navbar = () => {
                   )}
                 </button>
               </div>
+            </div>
+
+            {/* Mobile Search Bar */}
+            <div className="block sm:hidden w-full mt-2">
+              <form
+                onSubmit={handleSubmit}
+                className="relative flex items-center bg-white shadow-sm rounded-md w-full"
+              >
+                <input
+                  onChange={(e) => setSearchText(e.target.value)}
+                  value={searchText}
+                  className="form-input w-full pl-4 pr-12 text-sm h-10 rounded-md border border-gray-300 focus:border-gray-400 outline-none"
+                  placeholder={t("search-placeholder")}
+                />
+                <button
+                  type="submit"
+                  className="absolute right-0 top-0 h-full px-4 text-xl text-gray-400 hover:text-gray-700"
+                >
+                  <IoSearchOutline />
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -175,7 +204,7 @@ const Navbar = () => {
                 >
                   <Link
                     href={`/search?category=${mainCategory.slug}&_id=${mainCategory._id}`}
-                    className="font-montserrat group inline-flex items-center text-[#192A56] hover:text-black-200 text-lg font-medium focus:outline-none  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                    className="text-[#192A56] hover:text-orange-500 font-montserrat text-lg font-medium underline-hover"
                   >
                     {showingTranslateValue(mainCategory.name)}
                   </Link>

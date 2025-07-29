@@ -25,6 +25,8 @@ import WhyChooseUs from "@components/whyChooseUs/WhyChooseUs";
 import ShirtGallery from "@components/shirt-gallery/ShirtGallery";
 import HomeCategoryWrapper from "@components/HomeCategoryWrapper";
 import Image from "next/image";
+import DealOfTheDay from "@components/dealOfTheDay/DealOfTheDay";
+import PremiumFurniture from "@components/premiumFurniture/PremiumFurniture";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -119,7 +121,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                     </div>
                   </div> */}
 
-                   <FeatureCategory />
+                  <FeatureCategory />
                 </div>
               </div>
             )}
@@ -189,142 +191,10 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               </div>
             )}
             {/* Deal of the Day Section */}
-            <div className="bg-gray-100 py-16">
-              <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
-                <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-                  {/* Left side - Image */}
-                  <div className="w-full lg:w-1/2 flex justify-center">
-                    <div className="relative">
-                      <img
-                        src="/cta/offerOfTheDay.png"
-                        alt="Deal of the Day"
-                        className="w-64 h-64 lg:w-96 lg:h-80 object-contain"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Right side - Content */}
-                  <div className="w-full lg:w-1/2 text-center lg:text-left">
-                    <h2 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-4 leading-tight">
-                      DEAL
-                      <br />
-                      OF THE DAY
-                    </h2>
-                    <div className="w-16 h-1 bg-gray-400 mb-6 mx-auto lg:mx-0"></div>
-
-                    <h3 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4 uppercase tracking-wide">
-                      CLICK SHOP NOW FOR ALL DEAL OF THE PRODUCT
-                    </h3>
-
-                    <p className="text-gray-600 mb-6 leading-relaxed text-sm lg:text-base">
-                      Discover our exclusive deal of the day! Enjoy unbeatable
-                      prices on premium furniture and home decor. Shop now to
-                      upgrade your space with style and comfort. Hurry, this
-                      offer is available for a limited time only!
-                    </p>
-
-                    <button className="bg-customPink hover:bg-customPinkDark text-white px-8 py-3 rounded-md font-medium transition-colors duration-300 uppercase tracking-wide">
-                      Shop Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <DealOfTheDay />
 
             {/* Best Month Offer Section */}
-            <div className="bg-white py-16">
-              <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
-                {/* Header */}
-                <div className="text-center mb-12">
-                  <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-                    Best Month offer
-                  </h2>
-                  <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    Discover premium furniture collections with exceptional
-                    quality and modern design. Transform your space with our
-                    curated selection of contemporary pieces.
-                  </p>
-                </div>
-
-                {/* Main Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                  {/* Left Main Feature */}
-                  <div className="lg:col-span-2 relative">
-                    <div className="bg-gray-50 rounded-3xl p-8 lg:p-12 min-h-[500px] flex items-center">
-                      <div className="w-full flex flex-col lg:flex-row items-center gap-8">
-                        {/* Content */}
-                        <div className="lg:w-1/2 text-center lg:text-left">
-                          <h3 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-                            Premium Furniture
-                          </h3>
-                          <p className="text-gray-600 text-lg mb-6 uppercase tracking-wide">
-                            NEW AUTUMN ARRIVAL 2024
-                          </p>
-                          <button className="bg-customPink hover:bg-customPinkDark text-white px-8 py-3 rounded-full font-medium transition-colors duration-300">
-                            Explore Collection
-                          </button>
-                        </div>
-
-                        {/* Main Product Image */}
-                        <div className="lg:w-1/2 relative">
-                          <div className="relative">
-                            {/* Green decorative circle */}
-                            <div className="absolute -left-16 top-1/2 transform -translate-y-1/2 w-32 h-32 lg:w-48 lg:h-48 bg-green-200 rounded-full opacity-60 -z-10"></div>
-                            {/* Placeholder for main chair image */}
-                            <div className="w-80 h-80 bg-gray-200 rounded-lg flex items-center justify-center">
-                              <Image
-                                src="/chairs/chair1.png"
-                                alt="Main Chair"
-                                layout="fill"
-                                objectFit="cover"
-                                className="rounded-lg"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right Side Products */}
-                  <div className="space-y-6 flex flex-col justify-around">
-                    {/* Top Product Card */}
-                    <div className="bg-gray-50 rounded-2xl p-6 relative overflow-hidden">
-                      <div className="flex items-center gap-4">
-                        <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">
-                          <Image
-                            src="/chairs/chair2.png"
-                            alt="Main Chair"
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-lg"
-                          />
-                        </div>
-                      </div>
-                      {/* Green decorative element */}
-                      <div className="absolute -right-8 -top-8 w-20 h-20 bg-green-200 rounded-full opacity-40"></div>
-                    </div>
-
-                    {/* Bottom Product Card */}
-                    <div className="bg-gray-50 rounded-2xl p-6 relative overflow-hidden">
-                      <div className="flex items-center gap-4">
-                        <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">
-                          <Image
-                            src="/chairs/chair3.png"
-                            alt="Sofa"
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-lg"
-                          />
-                        </div>
-                      </div>
-                      {/* Blue decorative element */}
-                      <div className="absolute -right-8 -top-8 w-20 h-20 bg-blue-200 rounded-full opacity-40"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <PremiumFurniture />
 
             {/* Features Section */}
             <div className="bg-gray-900 py-12">
@@ -370,7 +240,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg">
-                        Win $100 To Shop
+                        Win ₹500 To Shop
                       </h3>
                       <p className="text-gray-300 text-sm">Enter Now</p>
                     </div>
