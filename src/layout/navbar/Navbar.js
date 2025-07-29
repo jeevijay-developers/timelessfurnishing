@@ -99,7 +99,7 @@ const Navbar = () => {
               </div>
 
               {/* Desktop Search Bar */}
-              <div className="hidden sm:block w-[50%]">
+              <div className="hidden lg:block w-[40%]">
                 <form
                   onSubmit={handleSubmit}
                   className="relative flex items-center bg-white shadow-sm rounded-md w-full"
@@ -178,7 +178,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Search Bar */}
-            <div className="block sm:hidden w-full mt-2">
+            <div className="block lg:hidden w-full mt-2">
               <form
                 onSubmit={handleSubmit}
                 className="relative flex items-center bg-white shadow-sm rounded-md w-full"
