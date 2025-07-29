@@ -1,11 +1,25 @@
 import React from "react";
+import { useRouter } from "next/navigation";
 
-const CategoryCard = ({ name, subtitle, discount, imageUrl }) => {
+const CategoryCard = ({ name, subtitle, discount, imageUrl, route }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (route) {
+      router.push(route);
+    }
+  };
+
   return (
     // The main container for the card with responsive height and styling
     <div
-      className="relative h-64 md:h-72 w-full bg-cover bg-center rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out hover:scale-105"
+      className="relative h-64 md:h-72 w-full bg-cover bg-center rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
       style={{ backgroundImage: `url(${imageUrl})` }}
+      onClick={handleClick}
+      tabIndex={0}
+      role="button"
+      aria-label={`Go to ${name} category`}
+   
     >
       {/* Semi-transparent overlay to ensure text is readable */}
       <div className="absolute inset-0 bg-black bg-opacity-25 group-hover:bg-opacity-30 transition-all duration-300"></div>
