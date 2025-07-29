@@ -2,12 +2,9 @@ import CMSkeleton from "@components/preloader/CMSkeleton";
 import { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 
-const ProductDescriptionAccordion = ({
-  description,
-  title = "Product Description",
-}) => {
+const ProductDetails = ({ description, title = "Product Description" }) => {
   const [isOpen, setIsOpen] = useState(false);
-console.log(description);
+  console.log(description);
   return (
     <div className="mt-6 border border-gray-200 rounded-md">
       <button
@@ -26,11 +23,10 @@ console.log(description);
         <div
           className="px-4 py-3 text-sm leading-6 text-gray-600 md:leading-7 bg-white border-t border-gray-200"
           dangerouslySetInnerHTML={{ __html: description }}
-        >
-        </div>
+        ></div>
       )}
     </div>
   );
 };
 
-export default ProductDescriptionAccordion;
+export default ProductDetails;

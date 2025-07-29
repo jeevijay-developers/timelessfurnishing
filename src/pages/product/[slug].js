@@ -43,8 +43,9 @@ const InnerImageZoom = dynamic(() => import("react-inner-image-zoom"), {
 });
 
 import "react-inner-image-zoom/lib/styles.min.css";
-import ProductDetails from "./productDetails";
+
 import useGetSetting from "@hooks/useGetSetting";
+import ProductDetails from "./ProductDetails";
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const router = useRouter();
   const { storeCustomizationSetting, loading, error } = useGetSetting();
