@@ -121,45 +121,59 @@ const Navbar = () => {
 
               {/* Icons */}
               <div className="flex items-center space-x-3 lg:space-x-10">
-                <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
-                <button
-                  className="text-black text-2xl font-bold"
-                  aria-label="Alert"
-                >
-                  <FiBell className="w-6 h-6" />
-                </button>
-                <button
-                  onClick={toggleCartDrawer}
-                  className="relative text-black text-2xl font-bold"
-                  aria-label="Total"
-                >
-                  <span className="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
-                    {totalItems}
-                  </span>
-                  <FiShoppingCart className="w-6 h-6" />
-                </button>
-                <button
-                  className="text-black text-2xl hidden lg:block"
-                  aria-label="Login"
-                >
-                  {userInfo?.image ? (
-                    <Link href="/user/dashboard">
-                      <Image
-                        width={29}
-                        height={29}
-                        src={userInfo.image}
-                        alt="user"
-                        className="bg-white rounded-full"
-                      />
-                    </Link>
-                  ) : userInfo?.name ? (
-                    <Link href="/user/dashboard">{userInfo.name[0]}</Link>
-                  ) : (
-                    <Link href="/auth/login">
-                      <FaRegUser className="w-6 h-6" />
-                    </Link>
-                  )}
-                </button>
+           
+                  <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
+                
+
+                <div className="flex flex-col items-center">
+                  <button
+                    className="text-black text-2xl font-bold"
+                    aria-label="Alert"
+                  >
+                    <FiBell className="w-6 h-6" />
+                  </button>
+                  <span className="text-xs mt-1">Alerts</span>
+                </div>
+
+                <div className="flex flex-col items-center">
+                  <button
+                    onClick={toggleCartDrawer}
+                    className="relative text-black text-2xl font-bold"
+                    aria-label="Total"
+                  >
+                    <span className="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
+                      {totalItems}
+                    </span>
+                    <FiShoppingCart className="w-6 h-6" />
+                  </button>
+                  <span className="text-xs mt-1">Cart</span>
+                </div>
+
+                <div className="flex flex-col items-center">
+                  <button
+                    className="text-black text-2xl hidden lg:block"
+                    aria-label="Login"
+                  >
+                    {userInfo?.image ? (
+                      <Link href="/user/dashboard">
+                        <Image
+                          width={29}
+                          height={29}
+                          src={userInfo.image}
+                          alt="user"
+                          className="bg-white rounded-full"
+                        />
+                      </Link>
+                    ) : userInfo?.name ? (
+                      <Link href="/user/dashboard">{userInfo.name[0]}</Link>
+                    ) : (
+                      <Link href="/auth/login">
+                        <FaRegUser className="w-6 h-6" />
+                      </Link>
+                    )}
+                  <span className="text-xs mt-1 hidden lg:block">Account</span>
+                  </button>
+                </div>
               </div>
             </div>
 

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 
 import ProductServices from "@services/ProductServices";
@@ -9,7 +8,6 @@ import Loading from "@components/preloader/Loading";
 
 const MegaMenuContent = ({ category, onMouseLeave }) => {
   const { showingTranslateValue } = useUtilsFunction();
-
   const [activeSubCategory, setActiveSubCategory] = useState(null);
 
   useEffect(() => {
@@ -25,21 +23,24 @@ const MegaMenuContent = ({ category, onMouseLeave }) => {
       className="absolute top-full left-0 w-full bg-white shadow-xl z-50"
       onMouseLeave={onMouseLeave}
     >
-      <div className="max-w-screen-2xl  mx-auto px-6 py-8 flex flex-col  gap-8">
-        {/* Sub-categories Section */}
-        <div className="grid grid-cols-4 gap-6 divide-x divide-gray-900">
+      <div className="max-w-screen-2xl mx-auto px-6 py-8 flex flex-col gap-8">
+        {/* Sub-Categories Grid */}
+        <div className="grid grid-cols-4 gap-6 divide-x divide-gray-200">
           {category.children.map((subCategory) => (
             <div
               key={subCategory._id}
               className="w-full"
               onMouseEnter={() => setActiveSubCategory(subCategory)}
             >
+              {/* SubCategory Title */}
               <Link
-                className="text-sm font-bold pl-6 text-gray-900 mb-2 border-b-2 border-transparent hover:underline cursor-pointer inline-block"
                 href={`/search?category=${subCategory.slug}&_id=${subCategory._id}`}
+                className="text-sm font-semibold pl-6 text-gray-900 mb-2 border-b-2 border-transparent hover:underline inline-block"
               >
                 {showingTranslateValue(subCategory.name)}
               </Link>
+
+              {/* SubCategory Children */}
               <ul className="space-y-1 pl-6">
                 {(subCategory.children || []).slice(0, 7).map((child) => (
                   <li key={child._id}>

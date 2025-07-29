@@ -43,9 +43,11 @@ const InnerImageZoom = dynamic(() => import("react-inner-image-zoom"), {
 });
 
 import "react-inner-image-zoom/lib/styles.min.css";
+import ProductDetails from "./productDetails";
+import useGetSetting from "@hooks/useGetSetting";
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const router = useRouter();
-
+  const { storeCustomizationSetting, loading, error } = useGetSetting();
   const { lang, showingTranslateValue, getNumber, currency } =
     useUtilsFunction();
 
@@ -237,7 +239,13 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
     .replace(/[^A-Z0-9]+/gi, "-");
 
   // console.log("discount", discount);
-  console.log("slug ->", router);
+  // console.log("slug ->", router);
+  console.log(
+    "term_and_condition",
+    showingTranslateValue(
+      storeCustomizationSetting?.term_and_condition?.description
+    )
+  );
 
   return (
     <>
@@ -373,7 +381,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                         </div>
 
                         <div>
-                          <div className="text-sm leading-6 text-gray-500 md:leading-7">
+                          {/* <div className="text-sm leading-6 text-gray-500 md:leading-7">
                             {isReadMore
                               ? showingTranslateValue(
                                   product?.description
@@ -401,7 +409,20 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                       : t("common:showLess")}
                                   </span>
                                 )}
-                          </div>
+                          </div> */}
+                          <ProductDetails
+                            title={"OverView"}
+                            description={showingTranslateValue(
+                              product?.description
+                            )}
+                          />
+                          {/* <ProductDetails
+                            title={"Terms And Conditions"}
+                            description={showingTranslateValue(
+                              storeCustomizationSetting?.term_and_condition
+                                ?.description
+                            )}
+                          /> */}
 
                           <div className="flex items-center mt-4">
                             <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
