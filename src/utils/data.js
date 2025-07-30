@@ -57,11 +57,11 @@ const pages = [
     href: "/terms-and-conditions",
     icon: FiFileText,
   },
-  {
-    title: "Cancellation And Refund",
-    href: "/Cancellation-and-Refund",
-    icon: FiFileText,
-  },
+  // {
+  //   title: "Cancellation And Refund",
+  //   href: "/Cancellation-and-Refund",
+  //   icon: FiFileText,
+  // },
 ];
 
 const userSidebar = [
