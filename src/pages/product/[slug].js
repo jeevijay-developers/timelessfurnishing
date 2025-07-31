@@ -382,12 +382,14 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                         </div>
 
                         <div>
-                          {/* <div className="text-sm leading-6 text-gray-500 md:leading-7">
+                          <div className="text-sm leading-6 text-gray-500 md:leading-7">
                             {isReadMore
-                              ? showingTranslateValue(
+                              ? <span  dangerouslySetInnerHTML={{ __html: showingTranslateValue(
                                   product?.description
-                                )?.slice(0, 230)
-                              : showingTranslateValue(product?.description)}
+                                )?.slice(0, 230) }} />
+                              :  <span  dangerouslySetInnerHTML={{ __html: showingTranslateValue(
+                                  product?.description
+                                ) }} />}
                             <br />
                             {Object?.keys(product?.description)?.includes(lang)
                               ? product?.description[lang]?.length > 230 && (
@@ -410,13 +412,13 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                       : t("common:showLess")}
                                   </span>
                                 )}
-                          </div> */}
-                          <ProductDetails
+                          </div> 
+                          {/* <ProductDetails
                             title={"OverView"}
                             description={showingTranslateValue(
                               product?.description
                             )}
-                          />
+                          /> */}
                           {/* <ProductDetails
                             title={"Terms And Conditions"}
                             description={showingTranslateValue(
