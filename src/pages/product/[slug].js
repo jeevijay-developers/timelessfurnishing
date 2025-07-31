@@ -395,22 +395,31 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 ></span>
                                 <span
                                   onClick={() => setIsReadMore(!isReadMore)}
-                                  className="read-or-hide cursor-pointer px-2 py-1 bg-blue-100 rounded-xl text-emerald-600 font-semibold absolute bottom-0 right-0"
+                                  className="read-or-hide cursor-pointer   rounded-xl bg-blue-50font-semibold absolute bottom-0 right-0"
                                 >
-                                  Read more
+                                  ...Read more
                                 </span>
                               </div>
                             ) : (
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: showingTranslateValue(
-                                    product?.description
-                                  ),
-                                }}
-                              />
+                           <div className="flex flex-col relative">
+                                {" "}
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: showingTranslateValue(
+                                      product?.description
+                                    ),
+                                  }}
+                                ></span>
+                                <span
+                                  onClick={() => setIsReadMore(!isReadMore)}
+                                  className="read-or-hide cursor-pointer bg-blue-50  rounded-xl font-semibold absolute bottom-0 right-0"
+                                >
+                                  Show Less
+                                </span>
+                              </div>
                             )}
                             <br />
-                            {Object?.keys(product?.description)?.includes(lang)
+                            {/* {Object?.keys(product?.description)?.includes(lang)
                               ? product?.description[lang]?.length > 1000 && (
                                   <span
                                     onClick={() => setIsReadMore(!isReadMore)}
@@ -430,7 +439,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                       ? t("common:moreInfo")
                                       : t("common:showLess")}
                                   </span>
-                                )}
+                                )} */}
                           </div>
                           {/* <ProductDetails
                             title={"OverView"}
