@@ -383,16 +383,35 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
                         <div>
                           <div className="text-sm leading-6 text-gray-500 md:leading-7">
-                            {isReadMore
-                              ? <span  dangerouslySetInnerHTML={{ __html: showingTranslateValue(
-                                  product?.description
-                                )?.slice(0, 230) }} />
-                              :  <span  dangerouslySetInnerHTML={{ __html: showingTranslateValue(
-                                  product?.description
-                                ) }} />}
+                            {isReadMore ? (
+                              <div className="flex flex-col relative">
+                                {" "}
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: showingTranslateValue(
+                                      product?.description
+                                    )?.slice(0, 1000),
+                                  }}
+                                ></span>
+                                <span
+                                  onClick={() => setIsReadMore(!isReadMore)}
+                                  className="read-or-hide cursor-pointer px-2 py-1 bg-blue-100 rounded-xl text-emerald-600 font-semibold absolute bottom-0 right-0"
+                                >
+                                  Read more
+                                </span>
+                              </div>
+                            ) : (
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: showingTranslateValue(
+                                    product?.description
+                                  ),
+                                }}
+                              />
+                            )}
                             <br />
                             {Object?.keys(product?.description)?.includes(lang)
-                              ? product?.description[lang]?.length > 230 && (
+                              ? product?.description[lang]?.length > 1000 && (
                                   <span
                                     onClick={() => setIsReadMore(!isReadMore)}
                                     className="read-or-hide"
@@ -402,7 +421,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                       : t("common:showLess")}
                                   </span>
                                 )
-                              : product?.description?.en?.length > 230 && (
+                              : product?.description?.en?.length > 1000 && (
                                   <span
                                     onClick={() => setIsReadMore(!isReadMore)}
                                     className="read-or-hide"
@@ -412,7 +431,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                       : t("common:showLess")}
                                   </span>
                                 )}
-                          </div> 
+                          </div>
                           {/* <ProductDetails
                             title={"OverView"}
                             description={showingTranslateValue(
