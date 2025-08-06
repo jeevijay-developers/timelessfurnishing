@@ -46,6 +46,58 @@ const ProductCard = ({ product, attributes }) => {
   const router = useRouter();
   const currency = globalSetting?.default_currency || "$";
 
+  const handleAddToCart = (p) => {
+    if (p.variants.length === 1 && p.variants[0].quantity < 1)
+      return notifyError("Insufficient stock");
+    // if (notAvailable) return notifyError('This Variation Not Available Now!');
+    if (Stock <= 0) return notifyError("Insufficient stock");
+    // console.log('selectVariant', selectVariant);
+
+    if (
+      product?.variants.map(
+        (variant) =>
+          Object.entries(variant).sort().toString() ===
+          Object.entries(selectVariant).sort().toString()
+      )
+    ) {
+      const { variants, categories, description, ...updatedProduct } = product;
+      const newItem = {
+        ...updatedProduct,
+        id: `${p.variants.length <= 1
+            ? p._id
+            : p._id +
+            variantTitle
+              ?.map(
+                // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
+                (att) => selectVariant[att._id]
+              )
+              .join("-")
+          }`,
+
+        title: `${p.variants.length <= 1
+            ? showingTranslateValue(product?.title)
+            : showingTranslateValue(product?.title) +
+            "-" +
+            variantTitle
+              ?.map(
+                // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
+                (att) =>
+                  att.variants?.find((v) => v._id === selectVariant[att._id])
+              )
+              .map((el) => showingTranslateValue(el?.name))
+          }`,
+        image: img,
+        variant: selectVariant,
+        price: Price,
+        originalPrice: originalPrice,
+      };
+      handleAddItem(newItem);
+      router.push("/checkout")
+    } else {
+      return notifyError("Please select all variant first!");
+    }
+  };
+
   // console.log('attributes in product cart',attributes)
 
   const toggleToolTip = () => {
@@ -186,25 +238,42 @@ const ProductCard = ({ product, attributes }) => {
                 )}{" "}
               </div>
             ) : (
-              <button
-                onClick={() => handleAddItem(product)}
-                aria-label="cart"
-                className="h-7 w-7 sm:h-9 sm:w-9 flex items-center justify-center border border-gray-200 rounded text-customPink hover:border-customPinkDark hover:bg-customPinkDark hover:text-white transition-all"
-              >
-                {" "}
-                <span className="text-lg sm:text-xl">
-                  <FaCartPlus />
-                </span>{" "}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleAddItem(product)}
+                  aria-label="Add to cart"
+                  className="h-7 w-7 sm:h-9 sm:w-9 flex items-center justify-center border border-gray-200 rounded text-customPink hover:border-customPinkDark hover:bg-customPinkDark hover:text-white transition-all duration-300"
+                >
+                  <span className="text-lg sm:text-xl">
+                    <FaCartPlus />
+                  </span>
+                </button>
+                <button
+                  onClick={() => {
+                    handleAddItem(product);
+                    router.push("/checkout");
+                    handleLogEvent('buy_now_clicked', {
+                      product_id: product._id,
+                      product_name: product.title,
+                      price: product.prices?.price
+                    });
+                  }}
+                  aria-label="Buy now"
+                  className="h-7 px-2 sm:h-9 sm:px-3 flex items-center justify-center bg-customPink border border-customPink rounded text-white hover:bg-customPinkDark hover:border-customPinkDark transition-all duration-300 shadow-sm hover:shadow-md"
+                >
+                  <span className="text-xs sm:text-sm font-medium whitespace-nowrap">
+                    Buy Now
+                  </span>
+                </button>
+              </div>
             )}
           </div>
           {/* share button */}
           <div
-            className={`absolute transition-transform ease-in-out shadow-lg shadow-gray-400/35 bg-gray-100 p-1 rounded-3xl ${
-              isToolTipVisible
+            className={`absolute transition-transform ease-in-out shadow-lg shadow-gray-400/35 bg-gray-100 p-1 rounded-3xl ${isToolTipVisible
                 ? "flex -translate-y-16 sm:-translate-y-20"
                 : "hidden"
-            }`}
+              }`}
           >
             <div className="tooltip-container flex items-center justify-center gap-1">
               <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center shadow-gray-200 rounded-full hover:bg-green-500 hover:text-gray-50">
@@ -236,17 +305,15 @@ const ProductCard = ({ product, attributes }) => {
             <div className="absolute -bottom-2 left-[45%] h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-gray-100" />
           </div>
           <div
-            className={`relative border-4 border-gray-50 bg-gradient-to-r from-customPink to-customPink p-2 rounded-full transition-all duration-300 ease-in-out shadow-gray-300/50 shadow-xl hover:cursor-pointer w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center ${
-              isToolTipVisible
+            className={`relative border-4 border-gray-50 bg-gradient-to-r from-customPink to-customPink p-2 rounded-full transition-all duration-300 ease-in-out shadow-gray-300/50 shadow-xl hover:cursor-pointer w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center ${isToolTipVisible
                 ? "scale-110 -translate-y-1 from-violet-800 to-indigo-800"
                 : ""
-            }`}
+              }`}
             onClick={toggleToolTip}
           >
             <FaShareAlt
-              className={`text-gray-100 dark:text-white text-sm sm:text-base transition-transform duration-300 hover:rotate-180 ${
-                isToolTipVisible ? "rotate-180" : ""
-              }`}
+              className={`text-gray-100 dark:text-white text-sm sm:text-base transition-transform duration-300 hover:rotate-180 ${isToolTipVisible ? "rotate-180" : ""
+                }`}
             />
           </div>
         </div>

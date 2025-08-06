@@ -18,6 +18,7 @@ const useLoginSubmit = () => {
     control,
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -43,6 +44,7 @@ const useLoginSubmit = () => {
 
         // console.log("res", res);
         notifySuccess(res.message);
+        reset(); // Reset form on successful registration
         return setLoading(false);
       } else if (router.pathname === "/auth/forget-password") {
         // Call the forget password API for reset password
@@ -98,6 +100,7 @@ const useLoginSubmit = () => {
     loading,
     control,
     handleSubmit,
+    reset,
     submitHandler,
   };
 };

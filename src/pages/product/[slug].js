@@ -457,17 +457,17 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
                           <div className="flex items-center mt-4">
                             <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
-                              <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-12 border-gray-300">
+                              <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-8 border-gray-300">
                                 <button
                                   onClick={() => setItem(item - 1)}
                                   disabled={item === 1}
                                   className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-12 text-heading border-e border-gray-300 hover:text-gray-500"
                                 >
                                   <span className="text-dark sm:text-2xl">
-                                    <FiMinus />
+                                    <FiMinus className="text-sm" />
                                   </span>
                                 </button>
-                                <p className="font-semibold flex items-center justify-center transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-10 md:w-20 xl:w-24">
+                                <p className="font-semibold flex text-sm items-center justify-center transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-heading w-10 md:w-15 xl:w-18">
                                   {item}
                                 </p>
                                 <button
@@ -476,15 +476,24 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                   className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
                                 >
                                   <span className="text-dark sm:text-2xl">
-                                    <FiPlus />
+                                    <FiPlus className="text-sm" />
                                   </span>
                                 </button>
                               </div>
                               <button
                                 onClick={() => handleAddToCart(product)}
-                                className={`bg-gray-800 hover:text-white hover:bg-gray-900 text-white text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-12`}
+                                className={`bg-gray-200 hover:text-gray-600 hover:bg-gray-300 text-gray-600 text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-12`}
                               >
                                 {t("common:addToCart")}
+                              </button>
+                              <button
+                                onClick={() => {  
+                                  handleAddToCart(product);
+                                  router.push("/checkout");
+                                }}
+                                className={`bg-gray-800 hover:text-white hover:bg-gray-900 text-white text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-12`}
+                              >
+                                Buy Now
                               </button>
                             </div>
                           </div>

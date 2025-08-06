@@ -22,8 +22,7 @@ const SignUp = () => {
                 <div className="text-center mb-6">
                   <h2 className="text-3xl font-bold font-serif">Signing Up</h2>
                   <p className="text-sm text-gray-500 mt-2 mb-8 sm:mb-10">
-                    Create an account by sign up with provider or email,
-                    password
+                    Create an account by sign up with provider or email, password
                   </p>
                 </div>
                 <form
@@ -76,16 +75,7 @@ const SignUp = () => {
                         type="password"
                         placeholder="Password"
                         Icon={FiLock}
-                        pattern={
-                          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/
-                        }
-                        patternMessage={[
-                          "1. Password must be at least 8 characters long.",
-                          "2. Password must contain at least one uppercase letter.",
-                          "3. Password must contain at least one lowercase letter.",
-                          "4. Password must contain at least one number.",
-                          "5. Password must contain at least one special character.",
-                        ]}
+                        autocomplete={"new-password"}
                       />
                       <Error errorName={errors.password} />
                     </div>
