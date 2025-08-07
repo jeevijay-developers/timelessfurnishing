@@ -192,31 +192,29 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       const { variants, categories, description, ...updatedProduct } = product;
       const newItem = {
         ...updatedProduct,
-        id: `${
-          p.variants.length <= 1
+        id: `${p.variants.length <= 1
             ? p._id
             : p._id +
-              variantTitle
-                ?.map(
-                  // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
-                  (att) => selectVariant[att._id]
-                )
-                .join("-")
-        }`,
+            variantTitle
+              ?.map(
+                // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
+                (att) => selectVariant[att._id]
+              )
+              .join("-")
+          }`,
 
-        title: `${
-          p.variants.length <= 1
+        title: `${p.variants.length <= 1
             ? showingTranslateValue(product?.title)
             : showingTranslateValue(product?.title) +
-              "-" +
-              variantTitle
-                ?.map(
-                  // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
-                  (att) =>
-                    att.variants?.find((v) => v._id === selectVariant[att._id])
-                )
-                .map((el) => showingTranslateValue(el?.name))
-        }`,
+            "-" +
+            variantTitle
+              ?.map(
+                // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
+                (att) =>
+                  att.variants?.find((v) => v._id === selectVariant[att._id])
+              )
+              .map((el) => showingTranslateValue(el?.name))
+          }`,
         image: img,
         variant: selectVariant,
         price: price,
@@ -401,7 +399,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 </span>
                               </div>
                             ) : (
-                           <div className="flex flex-col relative">
+                              <div className="flex flex-col relative">
                                 {" "}
                                 <span
                                   dangerouslySetInnerHTML={{
@@ -458,42 +456,42 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           <div className="flex items-center mt-4">
                             <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
                               <div className="w-[28rem] flex flex-col gap-2">
-                              <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-8 border-gray-300">
+                                <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-8 border-gray-300">
+                                  <button
+                                    onClick={() => setItem(item - 1)}
+                                    disabled={item === 1}
+                                    className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-12 text-heading border-e border-gray-300 hover:text-gray-500"
+                                  >
+                                    <span className="text-dark sm:text-2xl">
+                                      <FiMinus className="text-sm" />
+                                    </span>
+                                  </button>
+                                  <p className="font-semibold flex text-sm items-center justify-center transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-heading w-10 md:w-15 xl:w-18">
+                                    {item}
+                                  </p>
+                                  <button
+                                    onClick={() => setItem(item + 1)}
+                                    disabled={selectVariant?.quantity <= item}
+                                    className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
+                                  >
+                                    <span className="text-dark sm:text-2xl">
+                                      <FiPlus className="text-sm" />
+                                    </span>
+                                  </button>
+                                </div>
                                 <button
-                                  onClick={() => setItem(item - 1)}
-                                  disabled={item === 1}
-                                  className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-12 text-heading border-e border-gray-300 hover:text-gray-500"
+                                  onClick={() => handleAddToCart(product)}
+                                  className={`bg-gray-200 hover:text-gray-600 hover:bg-gray-300 text-gray-600 text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-2 md:px-4 lg:px-6 py-4 md:py-3.5 lg:py-4 w-full h-12`}
                                 >
-                                  <span className="text-dark sm:text-2xl">
-                                    <FiMinus className="text-sm" />
-                                  </span>
-                                </button>
-                                <p className="font-semibold flex text-sm items-center justify-center transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-heading w-10 md:w-15 xl:w-18">
-                                  {item}
-                                </p>
-                                <button
-                                  onClick={() => setItem(item + 1)}
-                                  disabled={selectVariant?.quantity <= item}
-                                  className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
-                                >
-                                  <span className="text-dark sm:text-2xl">
-                                    <FiPlus className="text-sm" />
-                                  </span>
+                                  {t("common:addToCart")}
                                 </button>
                               </div>
                               <button
-                                onClick={() => handleAddToCart(product)}
-                                className={`bg-gray-200 hover:text-gray-600 hover:bg-gray-300 text-gray-600 text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-2 md:px-4 lg:px-6 py-4 md:py-3.5 lg:py-4 w-full h-12`}
-                              >
-                                {t("common:addToCart")}
-                              </button>
-                              </div>
-                              <button
-                                onClick={() => {  
+                                onClick={() => {
                                   handleAddToCart(product);
                                   router.push("/checkout");
                                 }}
-                                className={`bg-gray-800 hover:text-white hover:bg-gray-900 text-white text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-12`}
+                                className={`bg-gray-800 hover:text-white hover:bg-gray-900 text-white text-sm leading-4 cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center mt-auto border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-12`}
                               >
                                 Buy Now
                               </button>
