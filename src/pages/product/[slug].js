@@ -457,6 +457,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
                           <div className="flex items-center mt-4">
                             <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
+                              <div className="w-[28rem] flex flex-col gap-2">
                               <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-8 border-gray-300">
                                 <button
                                   onClick={() => setItem(item - 1)}
@@ -482,10 +483,11 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                               </div>
                               <button
                                 onClick={() => handleAddToCart(product)}
-                                className={`bg-gray-200 hover:text-gray-600 hover:bg-gray-300 text-gray-600 text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-12`}
+                                className={`bg-gray-200 hover:text-gray-600 hover:bg-gray-300 text-gray-600 text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-2 md:px-4 lg:px-6 py-4 md:py-3.5 lg:py-4 w-full h-12`}
                               >
                                 {t("common:addToCart")}
                               </button>
+                              </div>
                               <button
                                 onClick={() => {  
                                   handleAddToCart(product);

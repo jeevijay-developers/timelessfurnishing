@@ -33,7 +33,7 @@ const PremiumFurniture = () => {
                       Premium Furniture
                     </h3>
                     <p className="text-gray-600 text-lg mb-6 uppercase tracking-wide">
-                      NEW AUTUMN ARRIVAL 2024
+                      NEW AUTUMN ARRIVAL 2025
                     </p>
                     <button
                       className="bg-customPink hover:bg-customPinkDark text-white px-8 py-3 rounded-full font-medium transition-colors duration-300"
@@ -55,7 +55,7 @@ const PremiumFurniture = () => {
                       {/* Placeholder for main chair image */}
                       <div className="w-80 h-80 bg-gray-200 rounded-lg flex items-center justify-center">
                         <Image
-                          src="/chairs/chair1.png"
+                          src="/chairs/chair1.jpg"
                           alt="Main Chair"
                           layout="fill"
                           objectFit="cover"
@@ -75,7 +75,7 @@ const PremiumFurniture = () => {
                 <div className="flex items-center gap-4">
                   <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">
                     <Image
-                      src="/chairs/chair2.png"
+                      src="/chairs/chair2.jpg"
                       alt="Main Chair"
                       layout="fill"
                       objectFit="cover"
@@ -92,7 +92,7 @@ const PremiumFurniture = () => {
                 <div className="flex items-center gap-4">
                   <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">
                     <Image
-                      src="/chairs/chair3.png"
+                      src="/chairs/chair3.jpg"
                       alt="Sofa"
                       layout="fill"
                       objectFit="cover"
