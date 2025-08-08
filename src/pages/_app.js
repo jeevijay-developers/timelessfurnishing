@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
-
+import Script from "next/script";
 // Internal imports
 import store from "@redux/store";
 import getStripe from "@lib/stripe";
@@ -21,6 +21,7 @@ import { SidebarProvider } from "@context/SidebarContext";
 import SettingServices from "@services/SettingServices";
 import socket from "@utils/socket";
 import "./product.vishal.css";
+import * as fbq from '../lib/fbpixel';
 
 let persistor = persistStore(store);
 let stripePromise = getStripe();
@@ -41,6 +42,16 @@ function MyApp({ Component, pageProps }) {
   socket.on("order-received", (data) => {
     console.log(data);
   });
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      fbq.pageview();
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   useEffect(() => {
     const fetchStoreSettings = async () => {
@@ -77,6 +88,32 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Script
+        id="fb-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2947972162071713');
+        fbq('track', 'PageView');
+      `,
+        }}
+      />
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: 'none' }}
+          src="https://www.facebook.com/tr?id=2947972162071713&ev=PageView&noscript=1"
+        />
+      </noscript>
       {/* Render TawkMessengerReact only if tawk_chat_status is enabled */}
       {storeSetting?.tawk_chat_status && (
         <TawkMessengerReact
