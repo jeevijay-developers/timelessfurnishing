@@ -7,36 +7,50 @@ class MyDocument extends Document {
 
     // Fetch general metadata from backend API
     const setting = await SettingServices.getStoreSeoSetting();
+    const ogsetting = await SettingServices.getStoreOgSetting();
 
-    return { ...initialProps, setting };
+    return { ...initialProps, setting, ogsetting };
   }
 
   render() {
     const setting = this.props.setting;
+    const ogsetting = this.props.ogsetting;
+
     return (
       <Html lang="en">
         <Head>
           <link rel="icon" href={"logo/logo.png"} />
           <meta
-            property="og:title"
-            content={setting?.meta_title || "Timeless Furnishing"}
+            property="title"
+            content={setting?.seo.meta_title || "Timeless Furnishing"}
           />
-          <meta property="og:type" content="eCommerce Website" />
+          <meta
+            property="site_name"
+            content={ogsetting?.og.og_title || "Timeless Furnishing"}
+          />
+          <meta
+            property="og:title"
+            content={ogsetting?.og.og_title || "Timeless Furnishing"}
+          />
+          <meta
+            property="description"
+            content={setting?.seo.meta_description || ""}
+          />
           <meta
             property="og:description"
-            content={setting?.meta_description || ""}
+            content={ogsetting?.og.og_description || ""}
           />
           <meta
             name="keywords"
-            content={setting?.meta_keywords || "ecommenrce online store"}
+            content={setting?.seo.meta_keywords || "ecommerce online store"}
           />
           <meta
             property="og:url"
-            content={setting?.meta_url || "https://timelessfurnishing.in"}
+            content={ogsetting?.og.og_url || "https://timelessfurnishing.in"}
           />
           <meta
             property="og:image"
-            content={setting?.meta_img || "/HomePage.png"}
+            content={setting?.seo.meta_img || "/HomePage.png"}
           />
         </Head>
         <body>

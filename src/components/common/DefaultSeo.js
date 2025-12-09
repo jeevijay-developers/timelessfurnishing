@@ -13,8 +13,6 @@ const DefaultSeo = () => {
       openGraph={{
         type: "website",
         locale: "en_IE",
-        url: globalSetting?.meta_url || "https://timelessfurnishing.in",
-        site_name: globalSetting?.meta_title || "Timeless Furnishing",
       }}
       twitter={{
         handle: "@handle",

@@ -9,6 +9,9 @@ const SettingServices = {
   getStoreSeoSetting: async () => {
     return requests.get("/setting/store-setting/seo");
   },
+  getStoreOgSetting: async () => {
+    return requests.get("/setting/store-setting/og");
+  },
   //store customization setting all function
   getStoreCustomizationSetting: async () => {
     return requests.get("/setting/store/customization/all");

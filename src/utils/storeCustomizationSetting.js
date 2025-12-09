@@ -883,4 +883,9 @@ export const storeCustomization = {
     meta_title: "Timeless Furnishing  ",
     meta_url: "https://timelessfurnishing.in/",
   },
+  og: {
+    og_description: "Clothing Store",
+    og_title: "Timeless Furnishing  ",
+    og_url: "https://timelessfurnishing.in/",
+  },
 };
