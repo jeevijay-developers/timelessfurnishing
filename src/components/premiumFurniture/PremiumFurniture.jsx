@@ -1,10 +1,10 @@
-"use client"
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import React from 'react'
+"use client";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React from "react";
 
 const PremiumFurniture = () => {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <div>
       <div className="bg-white py-16">
@@ -53,13 +53,13 @@ const PremiumFurniture = () => {
                       {/* Green decorative circle */}
                       <div className="absolute -left-16 top-1/2 transform -translate-y-1/2 w-32 h-32 lg:w-48 lg:h-48 bg-green-200 rounded-full opacity-60 -z-10"></div>
                       {/* Placeholder for main chair image */}
-                      <div className="w-80 h-80 bg-gray-200 rounded-lg flex items-center justify-center">
+                      <div className="w-80 h-80 bg-gray-200 rounded-lg flex items-center justify-center relative">
                         <Image
                           src="/chairs/chair1.jpg"
                           alt="Main Chair"
-                          layout="fill"
-                          objectFit="cover"
-                          className="rounded-lg"
+                          fill
+                          sizes="(min-width: 1024px) 20rem, 16rem"
+                          className="rounded-lg object-cover"
                         />
                       </div>
                     </div>
@@ -73,13 +73,13 @@ const PremiumFurniture = () => {
               {/* Top Product Card */}
               <div className="bg-gray-50 rounded-2xl p-6 relative overflow-hidden">
                 <div className="flex items-center gap-4">
-                  <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">
+                  <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center relative">
                     <Image
                       src="/chairs/chair2.jpg"
                       alt="Main Chair"
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-lg"
+                      fill
+                      sizes="112px"
+                      className="rounded-lg object-cover"
                     />
                   </div>
                 </div>
@@ -90,13 +90,13 @@ const PremiumFurniture = () => {
               {/* Bottom Product Card */}
               <div className="bg-gray-50 rounded-2xl p-6 relative overflow-hidden">
                 <div className="flex items-center gap-4">
-                  <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">
+                  <div className="w-28 h-36 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center relative">
                     <Image
                       src="/chairs/chair3.jpg"
                       alt="Sofa"
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-lg"
+                      fill
+                      sizes="112px"
+                      className="rounded-lg object-cover"
                     />
                   </div>
                 </div>
@@ -109,6 +109,6 @@ const PremiumFurniture = () => {
       </div>
     </div>
   );
-}
+};
 
-export default PremiumFurniture
+export default PremiumFurniture;

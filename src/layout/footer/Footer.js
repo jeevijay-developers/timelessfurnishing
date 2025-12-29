@@ -280,11 +280,12 @@ const Footer = () => {
               <div className="flex justify-center">
                 {/* lg:ml-auto pr-0 */}
                 <Image
-                  width={180}
-                  height={180}
-                  className="object-contain"
-                  src={"/logo/gray-logo.png"}
+                  width={240}
+                  height={80}
+                  priority
+                  src="/logo/gray-logo.png"
                   alt="logo"
+                  className="w-60 h-auto max-w-full"
                 />
               </div>
               <p className="leading-7 font-sans text-sm text-gray-600 mt-3  max-w-[300px] break-words">
@@ -348,7 +349,7 @@ const Footer = () => {
                           target="_blank"
                           className="block text-center mx-auto  bg-red-500 text-white hover:bg-red-600 rounded-full p-1"
                         >
-                          <CiInstagram size={30} round />
+                          <CiInstagram size={30} />
                         </Link>
                       </li>
                     )}

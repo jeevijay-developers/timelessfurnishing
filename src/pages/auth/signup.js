@@ -22,7 +22,8 @@ const SignUp = () => {
                 <div className="text-center mb-6">
                   <h2 className="text-3xl font-bold font-serif">Signing Up</h2>
                   <p className="text-sm text-gray-500 mt-2 mb-8 sm:mb-10">
-                    Create an account by sign up with provider or email, password
+                    Create an account by sign up with provider or email,
+                    password
                   </p>
                 </div>
                 <form
@@ -82,12 +83,6 @@ const SignUp = () => {
 
                     <div className="flex items-center justify-between">
                       <div className="flex ms-auto">
-                        {/* <Link
-                          href="/auth/phone-signup"
-                          className="text-end text-sm text-heading ps-3 underline hover:no-underline focus:outline-none"
-                        >
-                          Sign Up with Number?
-                        </Link> */}
                         <Link
                           href="/auth/login"
                           className="text-end text-sm text-heading ps-3 underline hover:no-underline focus:outline-none"

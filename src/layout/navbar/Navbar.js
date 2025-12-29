@@ -25,7 +25,6 @@ import CategoryDrawer from "@components/drawer/CategoryDrawer";
 import MegaMenuContent from "./MegaMenuContent";
 import NavbarPagesPopover from "./NavbarPagesPopover";
 
-
 const Navbar = () => {
   const { data: categoryData, isLoading: isCategoryLoading } = useQuery({
     queryKey: ["navbarCategories"],
@@ -62,7 +61,7 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     leaveTimer = setTimeout(() => {
       setHoveredCategory(null);
-    }, 400); 
+    }, 400);
   };
 
   const handleMouseEnter = (category) => {
@@ -87,13 +86,13 @@ const Navbar = () => {
                   <FiAlignLeft className="w-6 h-6" />
                 </button>
                 <Link href="/" className="block w-24 sm:w-28">
-                  <img
-                    width={100}
-                    height={100}
-                    style={{ width: "15rem", maxWidth: "100rem" }}
+                  <Image
+                    width={240}
+                    height={80}
                     priority
                     src="/logo/gray-logo.png"
                     alt="logo"
+                    className="w-60 h-auto max-w-full"
                   />
                 </Link>
               </div>
@@ -121,9 +120,7 @@ const Navbar = () => {
 
               {/* Icons */}
               <div className="flex items-center space-x-3 lg:space-x-10">
-           
-                  <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
-                
+                <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
 
                 <div className="flex flex-col items-center">
                   <button
@@ -171,7 +168,9 @@ const Navbar = () => {
                         <FaRegUser className="w-6 h-6" />
                       </Link>
                     )}
-                  <span className="text-xs mt-1 hidden lg:block">Account</span>
+                    <span className="text-xs mt-1 hidden lg:block">
+                      Account
+                    </span>
                   </button>
                 </div>
               </div>

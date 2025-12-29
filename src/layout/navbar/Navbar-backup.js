@@ -70,13 +70,13 @@ const Navbar = () => {
 
                 {/* Logo */}
                 <Link href="/" className="block w-24 sm:w-28">
-                  <img
-                    width={100}
-                    height={100}
-                    style={{ width: "15rem", maxWidth: "100rem" }}
+                  <Image
+                    width={240}
+                    height={80}
                     priority
                     src="/logo/gray-logo.png"
                     alt="logo"
+                    className="w-60 h-auto max-w-full"
                   />
                 </Link>
               </div>
